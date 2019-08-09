@@ -88,9 +88,9 @@ export default {
     rowAdded(cols, idx) {
       let rows = this.rows;
       if (idx !== undefined) {
-        rows.splice(idx + 1, 0, { columns: cols, elements: {} });
+        rows.splice(idx + 1, 0, { columns: cols, elements: new Array(cols) });
       } else {
-        rows.push({ columns: cols, elements: {} });
+        rows.push({ columns: cols, elements: new Array(cols) });
       }
       this.$store.commit("updateRows", rows);
     },

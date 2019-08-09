@@ -24,7 +24,7 @@
         <span data-tooltip="tooltip" data-placement="left" title="Save">
           <i class="far fa-copy"></i>
         </span>
-        <span data-tooltip="tooltip" data-placement="left" title="Delete">
+        <span data-tooltip="tooltip" data-placement="left" title="Delete" @click="deleteRow">
           <i class="far fa-trash-alt"></i>
         </span>
       </div>
@@ -39,10 +39,10 @@
       <i class="icon icon-plus"></i>
     </span>
     <div class="hl_page-creator--row">
-      <div class="hl_page-creator--column" v-for="(item,colIndex) in data.columns" :key="colIndex">
+      <div class="hl_page-creator--column" v-for="(item,colIndex) in data.elements" :key="colIndex">
         <element-item
-          v-if="data.elements[item-1]"
-          :data="data.elements[item-1]"
+          v-if="item"
+          :data="item"
           :row="idx"
           :col="colIndex"
           @rowActiveChange="rowActiveChange"
@@ -108,6 +108,9 @@ export default {
     },
     rowActiveChange(className) {
       this.actionsClass = className;
+    },
+    deleteRow() {
+      this.$store.commit("deleteRow", this.idx);
     }
   }
 };

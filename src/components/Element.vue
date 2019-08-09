@@ -16,7 +16,7 @@
         <span data-tooltip="tooltip" data-placement="top" title="Save">
           <i class="far fa-copy"></i>
         </span>
-        <span data-tooltip="tooltip" data-placement="top" title="Delete">
+        <span data-tooltip="tooltip" data-placement="top" title="Delete" @click="deleteClick">
           <i class="far fa-trash-alt"></i>
         </span>
       </div>
@@ -82,10 +82,20 @@ export default {
         element: this.data
       });
       EventBus.$emit("open-edit-popup");
+    },
+    deleteClick() {
+      this.$store.commit("deleteElement", {
+        row: this.row,
+        col: this.col
+      });
     }
   }
 };
 </script>
 
 <style>
+.element-container img {
+  height: 100%;
+  width: 100%;
+}
 </style>

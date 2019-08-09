@@ -18,15 +18,6 @@
               <label>{{contentText}}</label>
               <input type="text" class="form-control" v-model="content" />
             </div>
-            <div class="form-group">
-              <label>Add CSS</label>
-              <textarea
-                class="form-control"
-                placeholder="Add custom CSS here..."
-                rows="5"
-                v-model="css"
-              ></textarea>
-            </div>
             <button
               type="button"
               class="btn btn-light btn-sm save-btn"
@@ -58,7 +49,7 @@ export default {
   },
   watch: {
     elementToEdit(newVal, val) {
-      this.content = newVal.element.content;
+      this.content = newVal != undefined ? newVal.element.content : "";
     }
   },
   computed: {
